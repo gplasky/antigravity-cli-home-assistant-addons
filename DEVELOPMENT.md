@@ -10,6 +10,14 @@ This guide covers local development and testing workflows for the Antigravity CL
 - **Git** repository cloned locally
 - **NixOS development environment** (optional, for `nix develop`)
 
+### Automated Unit Testing
+
+Run the Python unit test suite to validate shell script syntax (`bash -n`), Dockerfile installer logic, MCP configuration schema, and alias wrappers:
+
+```bash
+python3 -m unittest discover -s tests
+```
+
 ### Quick Start Testing
 
 The fastest way to test changes without publishing new versions:
