@@ -9,9 +9,9 @@ Antigravity CLI provides an AI-driven, persistent web terminal pre-configured wi
 ## 🚀 Key Features
 
 * **Antigravity CLI Integration**: A full-featured web terminal pre-installed with Google's official `agy` binary (with backward-compatible support for `gemini` commands).
-* **Native Home Assistant Control**: Thanks to the integrated `ha-mcp` server (`mcp_config.json`), the AI can read states, call services, and interact with your entities natively.
+* **Native Home Assistant Control**: Thanks to the integrated `ha-mcp` server (`mcp_config.json`), Antigravity can read states, call services, and interact with your entities natively.
 * **Session Persistence**: Built-in `tmux` support means you can navigate away or refresh without losing your terminal session or AI conversation.
-* **Smart Environment Context**: Automatically creates a `GEMINI.md` file loaded with system info, architecture, and recent logs to ground the AI in your specific setup.
+* **Smart Environment Context**: Automatically creates a `GEMINI.md` file loaded with system info, architecture, and recent logs to ground Antigravity in your specific setup.
 * **Seamless Authentication**: Configure your `GEMINI_API_KEY` straight from the Home Assistant add-on UI.
 * **Direct Config Access**: Boots directly into your `/config` directory for immediate YAML editing and troubleshooting.
 

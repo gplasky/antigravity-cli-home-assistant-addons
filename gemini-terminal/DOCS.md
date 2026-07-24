@@ -24,10 +24,10 @@ Your authentication credentials and session data are stored in the `/data/.confi
 |--------|---------|-------------|
 | `gemini_api_key` | `""` | Optional Google API key for headless authentication |
 | `gemini_debug` | `false` | Enable verbose debugging and show internal logs in add-on logs |
-| `auto_launch_gemini` | `true` | Automatically start AI terminal session on open |
+| `auto_launch_gemini` | `true` | Automatically start Antigravity when opening the terminal |
 
 | `enable_ha_mcp` | `true` | Enable Home Assistant MCP server integration (`mcp_config.json`). |
-| `ha_smart_context` | `true` | Automatically generate HA context (`GEMINI.md`) for AI awareness. |
+| `ha_smart_context` | `true` | Automatically generate HA context (`GEMINI.md`) for Antigravity awareness. |
 | `persistent_apk_packages` | `[]` | APK packages to install on every startup. |
 | `persistent_pip_packages` | `[]` | Python packages to install on every startup. |
 

@@ -8,12 +8,12 @@ A secure, web-based terminal with Google's **Antigravity CLI** (`agy`) pre-insta
 
 ## What is Antigravity CLI?
 
-This add-on provides a web-based terminal interface pre-installed with Google's official **Antigravity CLI** (`agy`), allowing you to use powerful AI capabilities directly from your Home Assistant dashboard. It gives you direct access to the AI assistant through a terminal, ideal for:
+This add-on provides a web-based terminal interface pre-installed with Google's official **Antigravity CLI** (`agy`), allowing you to use Antigravity's powerful AI capabilities directly from your Home Assistant dashboard. It gives you direct access to Google's Antigravity AI assistant through a terminal, ideal for:
 
 - **Controlling your Home**: Use natural language to control devices via the built-in MCP server (`mcp_config.json`).
 - **Writing and editing code**: Get help with Home Assistant YAML, Python scripts, and more.
 - **Debugging problems**: Analyze Home Assistant logs and troubleshoot automation issues.
-- **Smart Context**: Automatically knows about your entities, system info, and recent errors via `GEMINI.md`.
+- **Smart Context**: Antigravity automatically knows about your entities, system info, and recent errors via `GEMINI.md`.
 
 ## Features
 
@@ -21,7 +21,7 @@ This add-on provides a web-based terminal interface pre-installed with Google's 
 - **Auto-Launch**: `agy` starts automatically when you open the terminal.
 - **Home Assistant MCP**: Pre-configured [ha-mcp](https://github.com/homeassistant-ai/ha-mcp) integration (`mcp_config.json`) for direct control of your home.
 - **Headless Auth**: Provide your `gemini_api_key` in the add-on configuration for zero-config startup.
-- **Smart Context**: Automatically generates a `GEMINI.md` file with your Home Assistant state for the AI to read.
+- **Smart Context**: Automatically generates a `GEMINI.md` file with your Home Assistant state for Antigravity to read.
 - **Direct Config Access**: Terminal starts in your `/config` directory for immediate access to all Home Assistant files.
 - **Session Persistence**: Built-in `tmux` support ensures your session stays alive if you close the browser tab.
 - **Persistent Package Management**: Install APK and pip packages that survive container restarts using the `persist-install` command.
@@ -31,7 +31,7 @@ This add-on provides a web-based terminal interface pre-installed with Google's 
 The terminal automatically starts `agy` when you open it. You can immediately start using commands like:
 
 ```bash
-# Ask the AI a question about your home
+# Ask Antigravity a question about your home
 agy "Which lights are currently on?"
 
 # Start an interactive session (or use 'gemini' alias)
@@ -61,9 +61,9 @@ persist-install pip requests
 | Option | Default | Description |
 |--------|---------|-------------|
 | `gemini_api_key` | `""` | Optional Google API key for automatic authentication. |
-| `auto_launch_gemini` | `true` | Auto-start AI session on terminal open. |
+| `auto_launch_gemini` | `true` | Auto-start Antigravity on terminal open. |
 | `enable_ha_mcp` | `true` | Enable the Home Assistant MCP server integration. |
-| `ha_smart_context` | `true` | Automatically generate HA context (`GEMINI.md`) for AI awareness. |
+| `ha_smart_context` | `true` | Automatically generate HA context (`GEMINI.md`) for Antigravity. |
 | `persistent_apk_packages` | `[]` | List of APK packages to install on startup. |
 | `persistent_pip_packages` | `[]` | List of pip packages to install on startup. |
 

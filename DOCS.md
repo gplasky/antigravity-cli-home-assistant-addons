@@ -49,7 +49,23 @@ agy "create an automation that turns on the porch lights when the front door ope
 
 ### 2. YAML Configuration Help
 
-Look at `automations.yaml` and help write proper Home Assistant configuration.
+```bash
+# Get help with syntax
+agy "what's wrong with this YAML? [paste YAML]"
+
+# Analyze your current config
+agy "Analyze my /config/configuration.yaml and suggest improvements"
+```
+
+### 3. Entity Management
+
+```bash
+# Clean up entity names
+agy "suggest better names for these entities: [paste entity list]"
+
+# Create a template sensor
+agy "create a template sensor that averages all my temperature sensors"
+```
 
 ---
 

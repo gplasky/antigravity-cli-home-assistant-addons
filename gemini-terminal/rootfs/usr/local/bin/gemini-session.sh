@@ -16,7 +16,7 @@ fi
 # Change to Home Assistant config directory
 cd /homeassistant
 
-# Set up PATH - ensure node, npm globals, agy, and standard bins are available
+# Set up PATH - ensure agy and standard bins are available
 export PATH="/usr/local/bin:/usr/bin:/bin:/root/.antigravity/bin:/data/.antigravity/bin:/root/.local/bin:/data/.local/bin:$PATH"
 
 # Configure git if not already configured
@@ -56,7 +56,7 @@ show_shell_help() {
     echo -e "${WHITE}Dropped to shell.${NC} Working directory: ${CYAN}/homeassistant${NC}"
     echo ""
     echo -e "${BOLD}Commands${NC}"
-    echo -e "  ${GREEN}agy${NC} (or ${GREEN}gemini${NC})  Restart the AI coding agent"
+    echo -e "  ${GREEN}agy${NC} (or ${GREEN}gemini${NC})  Restart the Antigravity coding agent"
     echo -e "  ${GREEN}ha-logs${NC} ${GRAY}<type>${NC}    View logs (core, error, supervisor, host)"
     echo -e "  ${GREEN}hab${NC} ${GRAY}<cmd>${NC}         HA admin CLI (entities, areas, dashboards, backups)"
     echo -e "  ${GREEN}zigporter${NC} ${GRAY}<cmd>${NC}   Zigbee tools (rename, inspect, stale, mesh)"
