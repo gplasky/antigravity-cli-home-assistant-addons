@@ -14,7 +14,7 @@ init: false
 ingress: true
 ingress_port: 8099
 ingress_stream: true
-panel_icon: mdi:account-circle-outline
+panel_icon: mdi:google-gemini
 panel_title: "Antigravity CLI"
 
 # File access - Home Assistant config directory
