@@ -2,9 +2,6 @@
 
 A secure, web-based terminal with Google's **Antigravity CLI** (`agy`) pre-installed for Home Assistant.
 
-![Antigravity CLI Screenshot](https://github.com/oded996/gemini-cli-home-assistant-addons/raw/main/gemini-terminal/screenshot.png)
-
-*Antigravity CLI running in Home Assistant*
 
 ## What is Antigravity CLI?
 
