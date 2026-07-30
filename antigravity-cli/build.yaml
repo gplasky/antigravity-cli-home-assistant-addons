@@ -1,0 +1,4 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#build-options
+build_from:
+  aarch64: "ghcr.io/home-assistant/aarch64-base-debian:trixie"
+  amd64: "ghcr.io/home-assistant/amd64-base-debian:trixie"

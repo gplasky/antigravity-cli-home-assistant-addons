@@ -28,20 +28,16 @@ ENV NODE_ENV=production \
     npm_config_update_notifier=false \
     npm_config_fund=false
 
-# Install system dependencies in a single layer
-# - nodejs/npm: Required for Gemini CLI
-# - git: Required by Gemini CLI for version control operations
-# - jq: JSON processing for helper scripts
-# - curl/ca-certificates: For downloading ttyd
-# - procps: Provides pgrep for health check
-# - tmux: Session persistence to prevent multiple Gemini CLI instances
-# - chromium: Headless browser for screenshot_url MCP tool (visual verification)
-# - nano, vim, tree, yq: User requested terminal tools
+# Install system dependencies and GitHub CLI in a single layer to minimize QEMU overhead
 RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl ca-certificates \
+    && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
-        ca-certificates \
         chromium \
-        curl \
+        gh \
         git \
         jq \
         nodejs \
@@ -54,14 +50,6 @@ RUN apt-get update \
         vim \
         tree \
         yq \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install GitHub CLI (gh)
-RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-    && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-    && apt-get update \
-    && apt-get install gh -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Chromium path for puppeteer-core (used by screenshot MCP tool)
@@ -122,5 +110,5 @@ LABEL \
     io.hass.version="${BUILD_VERSION}" \
     org.opencontainers.image.title="Antigravity CLI" \
     org.opencontainers.image.description="Terminal interface for Google's Antigravity CLI (agy) with deep MCP integration" \
-    org.opencontainers.image.source="https://github.com/oded996/gemini-cli-home-assistant-addons" \
+    org.opencontainers.image.source="https://github.com/gplasky/antigravity-cli-home-assistant-addons" \
     org.opencontainers.image.licenses="Apache-2.0"

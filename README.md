@@ -23,14 +23,14 @@ We've made installation as simple as possible.
 
 Click the button below to add this repository directly to your Home Assistant instance:
 
-[![Add Repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Foded996%2Fgemini-cli-home-assistant-addons)
+[![Add Repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fgplasky%2Fantigravity-cli-home-assistant-addons)
 
 ### Manual Install
 
 1. In Home Assistant, go to **Settings** → **Add-ons** → **Add-on Store**.
 2. Click the **⋮** menu in the top right corner and select **Repositories**.
 3. Add the following URL:
-   `https://github.com/oded996/gemini-cli-home-assistant-addons`
+   `https://github.com/gplasky/antigravity-cli-home-assistant-addons`
 4. Find **Antigravity CLI** in the add-on store and click **Install**.
 
 ## ⚙️ Configuration & Usage
@@ -40,12 +40,12 @@ Click the button below to add this repository directly to your Home Assistant in
 3. Start the add-on.
 4. Click **Open Web UI** (or enable the "Show in sidebar" toggle) to access your terminal!
 
-For advanced configurations, check out the [Full Add-on Documentation](./gemini-terminal/DOCS.md).
+For advanced configurations, check out the [Full Add-on Documentation](./antigravity-cli/DOCS.md).
 
 ## 📖 Documentation & Logs
 
-* [Full Add-on Documentation](./gemini-terminal/DOCS.md)
-* [Changelog](./gemini-terminal/CHANGELOG.md)
+* [Full Add-on Documentation](./antigravity-cli/DOCS.md)
+* [Changelog](./antigravity-cli/CHANGELOG.md)
 
 ## 🤝 Credits & Inspiration
 
