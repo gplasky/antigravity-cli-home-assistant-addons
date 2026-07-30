@@ -18,7 +18,7 @@ jobs:
     name: Initialize builds
     outputs:
       changed_addons: ${{ steps.changed_addons.outputs.addons }}
-      changed: ${{ steps.changed_addons.outputs.changed }}
+      changed: ${{ steps.changed_addons.outputs.addons != '[]' }}
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
