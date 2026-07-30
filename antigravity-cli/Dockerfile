@@ -122,5 +122,5 @@ LABEL \
     io.hass.version="${BUILD_VERSION}" \
     org.opencontainers.image.title="Antigravity CLI" \
     org.opencontainers.image.description="Terminal interface for Google's Antigravity CLI (agy) with deep MCP integration" \
-    org.opencontainers.image.source="https://github.com/oded996/gemini-cli-home-assistant-addons" \
+    org.opencontainers.image.source="https://github.com/gplasky/antigravity-cli-home-assistant-addons" \
     org.opencontainers.image.licenses="Apache-2.0"
