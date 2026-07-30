@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Initialize builds
     outputs:
-      changed_addons: ${{ steps.changed_addons.outputs.addons }}
-      changed: ${{ steps.changed_addons.outputs.addons != '[]' }}
+      changed_addons: ${{ steps.changed_addons.outputs.addons_list }}
+      changed: ${{ steps.changed_addons.outputs.addons_list != '[]' }}
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
