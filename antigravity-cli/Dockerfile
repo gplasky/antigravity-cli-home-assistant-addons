@@ -74,14 +74,14 @@ RUN curl -fsSL https://antigravity.google/cli/install.sh | bash \
            if [ -f "$p" ]; then cp "$p" /usr/local/bin/agy 2>/dev/null || true; break; fi; \
          done ) \
     && chmod +x /usr/local/bin/agy 2>/dev/null || true \
-    && npm install -g prettier --ignore-scripts \
+    && npm install -g prettier \
     && npm cache clean --force
 
 # Copy package.json files first for better layer caching
 COPY rootfs/opt/ha-mcp-server/package*.json /opt/ha-mcp-server/
 
 # Install MCP dependencies
-RUN (cd /opt/ha-mcp-server && npm install --omit=dev --ignore-scripts) \
+RUN (cd /opt/ha-mcp-server && npm install --omit=dev) \
     && npm cache clean --force
 
 # Copy root filesystem (server code, scripts, etc.)
