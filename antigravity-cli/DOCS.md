@@ -8,7 +8,7 @@ This add-on provides a web-based terminal pre-installed with **Antigravity CLI**
 
 ## Installation
 
-1. Add this repository to your Home Assistant add-on store: `https://github.com/oded996/gemini-cli-home-assistant-addons`
+1. Add this repository to your Home Assistant add-on store: `https://github.com/gplasky/antigravity-cli-home-assistant-addons`
 2. Install the **Antigravity CLI** add-on.
 3. Start the add-on.
 4. Click **"OPEN WEB UI"** to access the terminal.
@@ -55,7 +55,7 @@ The terminal starts directly in your `/config` directory, giving you immediate a
 ## Features
 
 - **Web Terminal**: Access a full terminal environment via your browser with a polished dark theme.
-- **Auto-Launching**: Gemini starts automatically when you open the terminal.
+- **Auto-Launching**: Antigravity starts automatically when you open the terminal.
 - **Home Assistant MCP Server**: Built-in integration with [ha-mcp](https://github.com/homeassistant-ai/ha-mcp) for natural language control.
 - **Smart Context**: Automatically generates a `GEMINI.md` context file for system and entity awareness.
 - **Session Persistence**: Built-in `tmux` support ensures your session stays alive.
@@ -108,4 +108,4 @@ Special thanks to the original author for the excellent foundation in containeri
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details. Gemini CLI itself is subject to Google's Terms of Service.
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details. Antigravity CLI itself is subject to Google's Terms of Service.
