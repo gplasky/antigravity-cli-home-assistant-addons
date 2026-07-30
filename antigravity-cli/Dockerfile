@@ -28,20 +28,16 @@ ENV NODE_ENV=production \
     npm_config_update_notifier=false \
     npm_config_fund=false
 
-# Install system dependencies in a single layer
-# - nodejs/npm: Required for Gemini CLI
-# - git: Required by Gemini CLI for version control operations
-# - jq: JSON processing for helper scripts
-# - curl/ca-certificates: For downloading ttyd
-# - procps: Provides pgrep for health check
-# - tmux: Session persistence to prevent multiple Gemini CLI instances
-# - chromium: Headless browser for screenshot_url MCP tool (visual verification)
-# - nano, vim, tree, yq: User requested terminal tools
+# Install system dependencies and GitHub CLI in a single layer to minimize QEMU overhead
 RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl ca-certificates \
+    && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
-        ca-certificates \
         chromium \
-        curl \
+        gh \
         git \
         jq \
         nodejs \
@@ -54,14 +50,6 @@ RUN apt-get update \
         vim \
         tree \
         yq \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install GitHub CLI (gh)
-RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-    && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-    && apt-get update \
-    && apt-get install gh -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Chromium path for puppeteer-core (used by screenshot MCP tool)
@@ -86,14 +74,14 @@ RUN curl -fsSL https://antigravity.google/cli/install.sh | bash \
            if [ -f "$p" ]; then cp "$p" /usr/local/bin/agy 2>/dev/null || true; break; fi; \
          done ) \
     && chmod +x /usr/local/bin/agy 2>/dev/null || true \
-    && npm install -g prettier \
+    && npm install -g prettier --ignore-scripts \
     && npm cache clean --force
 
 # Copy package.json files first for better layer caching
 COPY rootfs/opt/ha-mcp-server/package*.json /opt/ha-mcp-server/
 
 # Install MCP dependencies
-RUN (cd /opt/ha-mcp-server && npm install --omit=dev) \
+RUN (cd /opt/ha-mcp-server && npm install --omit=dev --ignore-scripts) \
     && npm cache clean --force
 
 # Copy root filesystem (server code, scripts, etc.)
