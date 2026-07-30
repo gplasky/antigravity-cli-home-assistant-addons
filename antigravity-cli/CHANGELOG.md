@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2026-07-30
+### Changed
+- Migrated GitHub Actions CI/CD to modern Home Assistant composite actions.
+- Switched to Generic Manifest Image multi-arch publishing to natively support caching and speed up Home Assistant installation.
+
 ## [1.0.4] - 2026-07-30
 ### Fixed
 - Fixed an issue where Home Assistant was building the add-on locally on the host machine instead of downloading the pre-built Docker container by correctly appending `-{arch}` to the image config.
