@@ -47,7 +47,7 @@ jobs:
         id: info
         uses: home-assistant/actions/helpers/info@master
         with:
-          target: ${{ matrix.addon }}
+          path: ${{ matrix.addon }}
 
       - name: Check if add-on should be built
         id: check
