@@ -1,7 +1,7 @@
 ---
 name: Antigravity CLI
 description: Terminal interface for Google's Antigravity CLI (agy) with deep MCP integration
-version: "1.0.8"
+version: "1.0.9"
 slug: antigravity_cli
 url: https://github.com/gplasky/antigravity-cli-home-assistant-addons
 image: ghcr.io/gplasky/antigravity-cli
@@ -15,7 +15,7 @@ init: false
 ingress: true
 ingress_port: 8099
 ingress_stream: true
-panel_icon: mdi:terminal
+panel_icon: mdi:console
 panel_title: Antigravity CLI
 
 # File access - Home Assistant config directory

@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.9] - 2026-07-30
+### Fixed
+- Fixed an embarrassing bug where the sidebar panel icon was blank because `mdi:terminal` is not a valid Material Design Icon (the correct icon is actually `mdi:console`).
+
 ## [1.0.8] - 2026-07-30
 ### Fixed
 - Restored the required `slug` parameter in `config.yaml` after build failure.
