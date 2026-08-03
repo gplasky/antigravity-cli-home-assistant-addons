@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-08-03
+### Fixed
+- Added explicit `ingress_panel: true` setting to `config.yaml` to trigger Supervisor's panel registration pipeline, preventing null icon payload passed to Home Assistant Core.
+
 ## [1.1.0] - 2026-07-31
 ### Fixed
 - Fixed Home Assistant sidebar panel icon configuration and metadata handling (`panel_icon: "mdi:terminal"`, `panel_admin: false`, proper YAML string quoting, and version bump to force Supervisor panel cache refresh).
