@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.3] - 2026-10-25
+### Changed
+- Updated Antigravity CLI (`agy`) to `1.4.6` and added `ANTIGRAVITY_VERSION` build argument in `Dockerfile` to ensure Docker layer cache invalidation on CLI version updates.
+
 ## [1.1.2] - 2026-08-03
 ### Fixed
 - Updated `panel_icon` to `"mdi:console"` for Home Assistant sidebar icon compatibility.
