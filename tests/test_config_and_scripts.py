@@ -10,14 +10,14 @@ class TestAddonConfigAndScripts(unittest.TestCase):
     def test_shell_script_syntax(self):
         """Verify that all bash scripts in the repository have valid syntax."""
         scripts_to_check = [
-            os.path.join(REPO_ROOT, "gemini-terminal", "rootfs", "etc", "s6-overlay", "s6-rc.d", "init-gemini", "run"),
-            os.path.join(REPO_ROOT, "gemini-terminal", "rootfs", "etc", "s6-overlay", "s6-rc.d", "ha-gemini", "run"),
-            os.path.join(REPO_ROOT, "gemini-terminal", "rootfs", "usr", "local", "bin", "gemini-session.sh"),
-            os.path.join(REPO_ROOT, "gemini-terminal", "rootfs", "usr", "local", "bin", "ha-mcp"),
+            os.path.join(REPO_ROOT, "antigravity-cli", "rootfs", "etc", "s6-overlay", "s6-rc.d", "init-gemini", "run"),
+            os.path.join(REPO_ROOT, "antigravity-cli", "rootfs", "etc", "s6-overlay", "s6-rc.d", "ha-gemini", "run"),
+            os.path.join(REPO_ROOT, "antigravity-cli", "rootfs", "usr", "local", "bin", "gemini-session.sh"),
+            os.path.join(REPO_ROOT, "antigravity-cli", "rootfs", "usr", "local", "bin", "ha-mcp"),
             os.path.join(REPO_ROOT, "config", "scripts", "gemini-session-picker.sh"),
         ]
         
-        gemini_alias = os.path.join(REPO_ROOT, "gemini-terminal", "rootfs", "usr", "local", "bin", "gemini")
+        gemini_alias = os.path.join(REPO_ROOT, "antigravity-cli", "rootfs", "usr", "local", "bin", "gemini")
         if os.path.exists(gemini_alias):
             scripts_to_check.append(gemini_alias)
 
@@ -49,16 +49,17 @@ class TestAddonConfigAndScripts(unittest.TestCase):
 
     def test_dockerfile_antigravity_installer(self):
         """Verify that Dockerfile installs agy via curl and not @google/gemini-cli."""
-        dockerfile_path = os.path.join(REPO_ROOT, "gemini-terminal", "Dockerfile")
+        dockerfile_path = os.path.join(REPO_ROOT, "antigravity-cli", "Dockerfile")
         with open(dockerfile_path, "r", encoding="utf-8") as f:
             content = f.read()
 
         self.assertNotIn("@google/gemini-cli", content, "Dockerfile should not install deprecated @google/gemini-cli npm package")
         self.assertIn("https://antigravity.google/cli/install.sh", content, "Dockerfile must use Antigravity CLI install script")
+        self.assertIn("ARG ANTIGRAVITY_VERSION=1.4.6", content, "Dockerfile must track ANTIGRAVITY_VERSION")
 
     def test_init_script_antigravity_vars(self):
         """Verify init-gemini/run exports ANTIGRAVITY environment variables and creates mcp_config.json."""
-        init_script_path = os.path.join(REPO_ROOT, "gemini-terminal", "rootfs", "etc", "s6-overlay", "s6-rc.d", "init-gemini", "run")
+        init_script_path = os.path.join(REPO_ROOT, "antigravity-cli", "rootfs", "etc", "s6-overlay", "s6-rc.d", "init-gemini", "run")
         with open(init_script_path, "r", encoding="utf-8") as f:
             content = f.read()
 
@@ -67,7 +68,7 @@ class TestAddonConfigAndScripts(unittest.TestCase):
 
     def test_gemini_session_launches_agy(self):
         """Verify gemini-session.sh executes agy instead of gemini --no-acp."""
-        session_script_path = os.path.join(REPO_ROOT, "gemini-terminal", "rootfs", "usr", "local", "bin", "gemini-session.sh")
+        session_script_path = os.path.join(REPO_ROOT, "antigravity-cli", "rootfs", "usr", "local", "bin", "gemini-session.sh")
         with open(session_script_path, "r", encoding="utf-8") as f:
             content = f.read()
 
@@ -75,7 +76,7 @@ class TestAddonConfigAndScripts(unittest.TestCase):
 
     def test_gemini_alias_wrapper_exists(self):
         """Verify that /usr/local/bin/gemini alias script exists and calls agy."""
-        alias_path = os.path.join(REPO_ROOT, "gemini-terminal", "rootfs", "usr", "local", "bin", "gemini")
+        alias_path = os.path.join(REPO_ROOT, "antigravity-cli", "rootfs", "usr", "local", "bin", "gemini")
         self.assertTrue(os.path.exists(alias_path), "gemini alias wrapper script should exist at rootfs/usr/local/bin/gemini")
         with open(alias_path, "r", encoding="utf-8") as f:
             content = f.read()

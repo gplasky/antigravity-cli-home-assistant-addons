@@ -21,7 +21,7 @@ FROM $BUILD_FROM
 ARG BUILD_VERSION
 ARG BUILD_ARCH
 ARG TTYD_VERSION=1.7.7
-ARG OPENCODE_VERSION=latest
+ARG ANTIGRAVITY_VERSION=1.4.6
 
 # Environment for better Node.js performance
 ENV NODE_ENV=production \
@@ -69,11 +69,13 @@ RUN python3 -m venv /opt/zigporter-venv \
     && ln -s /opt/zigporter-venv/bin/zigporter /usr/local/bin/zigporter
 
 # Install Antigravity CLI (agy) and Prettier globally
-RUN curl -fsSL https://antigravity.google/cli/install.sh | bash \
+RUN echo "Installing Antigravity CLI v${ANTIGRAVITY_VERSION}..." \
+    && curl -fsSL https://antigravity.google/cli/install.sh | bash -s -- --dir /usr/local/bin \
     && ( for p in /root/.antigravity/bin/agy /root/.local/bin/agy /root/bin/agy /usr/local/bin/agy; do \
-           if [ -f "$p" ]; then cp "$p" /usr/local/bin/agy 2>/dev/null || true; break; fi; \
+           if [ -f "$p" ] && [ "$p" != "/usr/local/bin/agy" ]; then cp "$p" /usr/local/bin/agy 2>/dev/null || true; break; fi; \
          done ) \
-    && chmod +x /usr/local/bin/agy 2>/dev/null || true \
+    && chmod +x /usr/local/bin/agy \
+    && /usr/local/bin/agy --version \
     && npm install -g prettier \
     && npm cache clean --force
 
